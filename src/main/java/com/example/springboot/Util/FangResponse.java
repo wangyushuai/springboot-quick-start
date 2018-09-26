@@ -3,8 +3,6 @@ package com.example.springboot.Util;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jdk.nashorn.internal.objects.annotations.Property;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,7 +14,7 @@ public class FangResponse implements Serializable {
 
     private final static long serialVersionUID = 1L;
 
-    private int code;
+    private int status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
     private String msg;
@@ -47,17 +45,17 @@ public class FangResponse implements Serializable {
 
     public FangResponse(int code, String msg, Object data) {
         super();
-        this.code = code;
+        this.status = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public int getCode() {
-        return code;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Object getData() {

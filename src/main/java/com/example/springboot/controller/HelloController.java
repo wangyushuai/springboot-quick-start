@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.Util.CustomerException;
 import com.example.springboot.Util.FangResponse;
 import com.example.springboot.Util.ServerConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,17 @@ public class HelloController {
         map.put("port",serverConstant.getPort());
         map.put("searchUrl",serverConstant.getSearch());
         return map;
+    }
+
+    @GetMapping("/test_error")
+    public void testError() {
+        int a= 1;
+        int b = 0;
+        double c = a/b;
+    }
+
+    @GetMapping("/test_ex_hanlder")
+    public void testExceptionHandler() throws CustomerException {
+        throw new CustomerException();
     }
 }

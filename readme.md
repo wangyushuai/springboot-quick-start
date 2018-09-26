@@ -96,6 +96,11 @@ private String xx;
 2. @PropertySource：注入来源，之所以用大括号，是因为数组形式，可以注入多个文件
 3. @ConfigurationProperties： 添加前缀，注意添加前缀之后，注入bean的方式，属性名称和配置文件里面的key一一对应，就用加@Value 这个注解，如果不一样，就要加 @value("${XXX}"，xxx表示全名比如： ask.search)
 
+# 3. 单元测试及异常处理
+## 3.1 SpringBoot2.X服务端异常讲解和配置全局异常
+
+
+
 
 
 
