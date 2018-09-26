@@ -99,6 +99,11 @@ private String xx;
 # 3. 单元测试及异常处理
 ## 3.1 SpringBoot2.X服务端异常讲解和配置全局异常
 
+1. 增加异常处理类 ExceptionHandler
+在类上添加 @RestControllerAdvice 注解 或 ControllerAdvice注解
+2. 在异常处理类中，增加异常处理方法
+在方法上添加 @ExceptionHandler(value=CustomerException.class)注解
+详见 CustomerExceptionHandler类及自定义CustomerException类（继承Excption,扔出异常时使用）
 
 
 
