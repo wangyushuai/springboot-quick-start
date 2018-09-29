@@ -8,12 +8,20 @@
 
 与C#环境对比如下：
 
-- JDK：jre(=C# CLR，java运行环境，包含了常用的、基本的类库) + jvm
+- JDK：jre( ≈ .net CLR，java运行环境，包含了常用的基本的类库（net,util，sql,io,javax.servlet）+ jvm)  + java工具（javac编译，jar打包,javadoc文档,java运行编译后的代码）
 - IDEA:Visual studio
 - maven : nuget
 - tomcat or resin or netty: IIS
 
 *补充：java语法与C#非常相近，转换成本较低，C#语法基本上就是在java语法的基础上包了一层层语法糖*
+
+*补充（java编译器和java解释器、JVM）：*
+
+![image](https://images2015.cnblogs.com/blog/1014269/201703/1014269-20170318215404807-1296928137.png)
+
+参考博客： https://www.cnblogs.com/chengdabelief/p/6576320.html
+
+JVM：JVM有自己完善的硬件架构，如处理器、堆栈（Stack）、寄存器等，还具有相应的指令系统（字节码就是一种指令格式）。JVM屏蔽了与具体操作系统平台相关的信息，使得Java程序只需要生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。JVM是Java平台无关的基础。JVM负责运行字节码：JVM把每一条要执行的字节码交给解释器，翻译成对应的机器码，然后由解释器执行。JVM解释执行字节码文件就是JVM操作Java解释器进行解释执行字节码文件的过程。
 
 
 
@@ -104,8 +112,6 @@ private String xx;
 2. 在异常处理类中，增加异常处理方法
 在方法上添加 @ExceptionHandler(value=CustomerException.class)注解
 详见 CustomerExceptionHandler类及自定义CustomerException类（继承Excption,扔出异常时使用）
-
-
 
 
 
