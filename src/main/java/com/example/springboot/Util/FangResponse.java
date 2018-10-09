@@ -33,8 +33,6 @@ public class FangResponse implements Serializable {
     }
 
 
-
-
     public Date getTime() {
         return new Date();
     }
@@ -48,6 +46,10 @@ public class FangResponse implements Serializable {
         this.status = code;
         this.msg = msg;
         this.data = data;
+    }
+
+    public static FangResponse buildSuccess(Object data) {
+        return new FangResponse(200, "success", data);
     }
 
     public int getStatus() {
