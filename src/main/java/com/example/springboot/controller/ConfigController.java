@@ -20,6 +20,10 @@ public class ConfigController {
     @Value("${server.domain}")
     private String value;
 
+    /**
+     *  测试多环境配置方法
+     * @return
+     */
     @RequestMapping("/get")
     public Object get() {
         return FangResponse.buildSuccess(value);

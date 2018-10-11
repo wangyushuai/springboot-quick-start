@@ -25,8 +25,8 @@ public class CustomExceptionHandler {
         LOG.error("url {},msg {}",request.getRequestURL(), ex.getMessage());
         Map<String,Object> map = new HashMap<>();
         map.put("code", 500);
-        map.put("msg", "error");
-        map.put("status",ex.getMessage());
+        map.put("status", "error");
+        map.put("msg",ex.getMessage());
         map.put("path", request.getRequestURL());
         return map;
     }

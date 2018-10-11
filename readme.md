@@ -11,7 +11,7 @@
 - JDK：jre( ≈ .net CLR，java运行环境，包含了常用的基本的类库（net,util，sql,io,javax.servlet）+ jvm)  + java工具（javac编译，jar打包,javadoc文档,java运行编译后的代码）
 - IDEA:Visual studio
 - maven : nuget
-- tomcat or resin or netty: IIS
+- tomcat or resin or Jetty: IIS
 
 *补充：java语法与C#非常相近，转换成本较低，C#语法基本上就是在java语法的基础上包了一层层语法糖*
 
@@ -71,13 +71,14 @@ src/main/resources
 （注意项目名，tomcat下可以部署多个项目的）
 
 
-# 2 DevTool热部署和配置文件自动注入
+# 2 DevTool热部署
 
 ## 2.1 DevTool热部署
 引入jar包后，不用重新启动，IDEA环境下rebuild则可以启动生效
 
-## 2.2 读取配置文件
-### 2.2.1 方式一
+# 3 SpringBoot 配置文件
+## 3.1 读取配置文件
+### 3.1.1 直接注解读取
 1. Controller上面配置 
 ```
 @PropertySource({"classpath":resource.property})
@@ -89,7 +90,7 @@ src/main/resources
 private String xx;
 ```
 
-### 2.2.2 配置文件自动映射成实体集
+### 3.1.2 配置文件自动映射成实体集
 1. 配置实体集ServerSettings 需添加注解
 
 
@@ -100,16 +101,43 @@ private String xx;
 @ConfigurationProperties(prefix = "ask")
 ```
 
+
 1. @Component：会扫描到它
 2. @PropertySource：注入来源，之所以用大括号，是因为数组形式，可以注入多个文件
-3. @ConfigurationProperties： 添加前缀，注意添加前缀之后，注入bean的方式，属性名称和配置文件里面的key一一对应，就用加@Value 这个注解，如果不一样，就要加 @value("${XXX}"，xxx表示全名比如： ask.search)
+3. @ConfigurationProperties： 添加前缀，注意添加前缀之后，注入bean的方式，属性名称和配置文件里面的key一一对应，就不用加@Value 这个注解； 如果不一样，就要加 @value("${XXX}"，xxx表示全名比如： ask.search)
 
-# 3. 单元测试及异常处理
-## 3.1 SpringBoot2.X服务端异常讲解和配置全局异常
+
+## 3.2 springboot多环境配置
+### 3.2.1 方式一：spring.profiles.active
+
+- resource
+    - applicaition.properties
+    - appllicaiton-dev.properties
+
+在 applicaiton.properties 选择要激活的文件，如：使用测试配置文件
+
+
+```
+// 激活测试配置
+spring.profiles.active=dev 
+```
+
+### 3.2.2 方式二： 通过maven构建多环境配置
+
+
+
+
+
+
+# 4. 单元测试及异常处理
+## 4.1 SpringBoot2.X服务端异常讲解和配置全局异常
 
 1. 增加异常处理类 ExceptionHandler
-在类上添加 @RestControllerAdvice 注解 或 ControllerAdvice注解
+
+添加 @RestControllerAdvice 注解 或 ControllerAdvice注解
+
 2. 在异常处理类中，增加异常处理方法
+
 在方法上添加 @ExceptionHandler(value=CustomerException.class)注解
 详见 CustomerExceptionHandler类及自定义CustomerException类（继承Excption,扔出异常时使用）
 

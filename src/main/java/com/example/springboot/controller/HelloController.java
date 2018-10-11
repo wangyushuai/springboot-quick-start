@@ -36,7 +36,7 @@ public class HelloController {
     }
 
 
-    @GetMapping("/test_config/")
+    @GetMapping("/test_config")
     public Map<String,Object> testConfig(@RequestParam(value = "id") Integer testId) {
         Map<String,Object> map = new HashMap<>();
         map.put("test_id",testId);
