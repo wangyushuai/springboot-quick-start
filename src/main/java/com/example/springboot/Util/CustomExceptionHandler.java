@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by wangyushuai@fang.com on 2018/9/26.
+ * 异常处理
  */
 @RestControllerAdvice
 public class CustomExceptionHandler {

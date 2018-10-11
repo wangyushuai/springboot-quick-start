@@ -3,8 +3,8 @@ package com.example.springboot.Util;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * 自定义异常类
  * Created by wangyushuai@fang.com on 2018/9/26.
+ * 自定义异常类
  */
 public class CustomerException extends Exception {
     private int status;

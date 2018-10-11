@@ -26,9 +26,6 @@ public class ServerConstant {
         this.search = search;
     }
 
-
-
-
     public String getServerUrl() {
         return serverUrl;
     }

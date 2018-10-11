@@ -9,6 +9,7 @@ import java.util.Date;
 
 /**
  * Created by wangyushuai@fang.com on 2018/9/26.
+ * Json响应工具类
  */
 public class FangResponse implements Serializable {
 
