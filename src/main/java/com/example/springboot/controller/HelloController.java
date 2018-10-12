@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 @RestController
-@PropertySource({"classpath:/config/config.properties"})
+@PropertySource({"classpath:/config/produce/config.properties"})
 public class HelloController {
 //    @Value("${test.server}")
 //    private String server;

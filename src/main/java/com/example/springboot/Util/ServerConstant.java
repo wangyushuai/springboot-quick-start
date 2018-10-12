@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@PropertySource({"classpath:/config/config.properties","classpath:/config/server.properties"})
+@PropertySource({"classpath:/config/produce/config.properties", "classpath:/config/produce/server.properties"})
 @ConfigurationProperties(prefix = "ask")
 public class ServerConstant {
     @Value("${ask.server}")
