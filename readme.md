@@ -27,7 +27,7 @@ JVM：JVM有自己完善的硬件架构，如处理器、堆栈（Stack）、寄
 
 ## 1.2 Learn what you can do with Spring Boot
 
-Spring Boot 轻量级框架，相对于SpringMVC,仅需要较少的配置，并升级了常用的API（更加轻便），通过SpringBoot 我们可以更加专注于业务，而不是架构（适合微服务）。
+SpringBoot 轻量级框架，相对于SpringMVC,仅需要较少的配置，并升级了常用的注解（更加轻便），通过SpringBoot 我们可以更加专注于业务，而不是架构。
 
 
 
@@ -39,7 +39,6 @@ Spring Boot 轻量级框架，相对于SpringMVC,仅需要较少的配置，并�
 
 2. 使用 IDEA 创建（手动创建）
 3. 目录文件结构讲解
-4. 
 ```
 src/main/java：存放代码
 src/main/resources
@@ -51,7 +50,7 @@ src/main/resources
 
 
 
-4. HelloWorld Develop
+4. 开发 "SpringBoot HelloWorld" (编写API常用注解介绍)
 
 ## 1.4 Run  （SpringBoot启动方式和部署war项目到tomcat）
 
@@ -73,12 +72,11 @@ src/main/resources
 
 # 2 DevTool热部署
 
-## 2.1 DevTool热部署
 引入jar包后，不用重新启动，IDEA环境下rebuild则可以启动生效
 
 # 3 SpringBoot 配置文件
 ## 3.1 读取配置文件
-### 3.1.1 直接注解读取
+### 3.1.1 注解读取
 1. Controller上面配置 
 ```
 @PropertySource({"classpath":resource.property})
@@ -112,7 +110,8 @@ private String xx;
 
 - resource
     - applicaition.properties
-    - appllicaiton-dev.properties
+    - applicaiton-dev.properties
+    - applicaiton-pro.properties
 
 在 applicaiton.properties 选择要激活的文件，如：使用测试配置文件
 
@@ -121,6 +120,8 @@ private String xx;
 // 激活测试配置
 spring.profiles.active=dev 
 ```
+所以， 需要区分环境的配置，可以防止 application-{}.properties中，通用配置可以放到 applicaition.properties中。
+
 
 ### 3.2.2 方式二： 通过maven构建多环境配置
 
@@ -129,7 +130,7 @@ spring.profiles.active=dev
 
 
 
-# 4. 单元测试及异常处理
+# 4. 异常处理
 ## 4.1 SpringBoot2.X服务端异常讲解和配置全局异常
 
 1. 增加异常处理类 ExceptionHandler
@@ -140,6 +141,56 @@ spring.profiles.active=dev
 
 在方法上添加 @ExceptionHandler(value=CustomerException.class)注解
 详见 CustomerExceptionHandler类及自定义CustomerException类（继承Excption,扔出异常时使用）
+
+
+
+# 5. 日志处理
+## 5.1. SpringBoot整合LogBack日志框架
+
+1. 常用处理java的日志组件 slf4j,log4j,logback,common-logging 等
+
+2. logback介绍：基于Log4j基础上大量改良，不能单独使用，推荐配合日志框架SLF4J来使用
+		logback当前分成三个模块：logback-core,logback-classic和logback-access;
+		logback-core是其它两个模块的基础模块
+3. 官网介绍：https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-logging
+
+    各个组件案例：https://logback.qos.ch/manual/index.html
+    
+4. 配置文件：classpath:logback-spring.xml
+5. 调用语法
+```
+ private Logger logger  = LoggerFactory.getLogger(this.getClass());
+ logger.error("this is a error");
+```
+
+6. logback-spring.xml 支持多环境配置
+参考博文： https://blog.csdn.net/qianyiyiding/article/details/76565810
+```
+ <springProfile name="production">
+        <root level="DEBUG">
+            <!--<appender-ref ref="FILEERROR"/>-->
+            <!--<appender-ref ref="FILEWARN"/>-->
+            <!--<appender-ref ref="FILEINFO"/>-->
+            <!--<appender-ref ref="DBAPPENDER"/>-->
+            <appender-ref ref="STDOUT"/>
+
+        </root>
+    </springProfile>
+
+
+    <springProfile name="dev">
+        <root level="DEBUG">
+            <!--<appender-ref ref="FILEERROR"/>-->
+            <!--<appender-ref ref="FILEWARN"/>-->
+            <!--<appender-ref ref="FILEINFO"/>-->
+            <!--<appender-ref ref="DBAPPENDER"/>-->
+            <appender-ref ref="CONSOLE"/>
+
+        </root>
+    </springProfile>
+```
+
+
 
 
 
