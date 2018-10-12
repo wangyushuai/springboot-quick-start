@@ -46,6 +46,12 @@ public class HelloController {
         return map;
     }
 
+    @GetMapping("/hello/{askId}")
+    public String helloProduct(@PathVariable("askId") String askId) {
+        return "askId:" + askId;
+    }
+
+
     @GetMapping("/test_error")
     public void testError() {
         int a= 1;
