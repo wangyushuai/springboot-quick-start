@@ -18,34 +18,24 @@ public class FangResponse implements Serializable {
     private int status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
-    private String msg;
+    private String message;
 
+    /**
+     * 时间戳
+     */
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "lz",timezone = "GMT+8")
     private Date timestamp;
+
+    /**
+     * 程序耗时
+     */
     @JsonIgnore
-    private String flag;
+    private String time;
 
-    public String getFlag() {
-        return flag;
-    }
-
-    public void setFlag(String flag) {
-        this.flag = flag;
-    }
-
-
-    public Date getTime() {
-        return new Date();
-    }
-
-    public void setTime(Date time) {
-        this.timestamp = time;
-    }
-
-    public FangResponse(int code, String msg, Object data) {
+    public FangResponse(int code, String message, Object data) {
         super();
         this.status = code;
-        this.msg = msg;
+        this.message = message;
         this.data = data;
     }
 
@@ -69,11 +59,28 @@ public class FangResponse implements Serializable {
         this.data = data;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
+
+    public Date getTimestamp() {
+        return new Date();
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
 }
