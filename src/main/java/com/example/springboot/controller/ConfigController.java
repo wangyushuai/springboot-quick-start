@@ -18,13 +18,13 @@ import java.util.Map;
  * 测试多环境配置
  */
 @RestController
-//@PropertySource("classpath:/config/prod/api.properties")
+@PropertySource("classpath:/config/api.properties")
 public class ConfigController {
 //    defaul.domain = www.fang.com
 //    default.port = 8080
 //    default.local = 127.0.0.1
 
-    @Value("agent.product.detail.domain")
+    @Value("${agent.product.detail.domain}")
     private String detailDomain;
 
     @Autowired

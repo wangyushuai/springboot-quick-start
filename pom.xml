@@ -59,7 +59,7 @@
             <id>dev</id>
             <!--定义配置打包目录属性-->
             <properties>
-                <profiles.active>develop</profiles.active>
+                <profiles.active>dev</profiles.active>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -69,7 +69,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <profiles.active>produce</profiles.active>
+                <profiles.active>prod</profiles.active>
             </properties>
         </profile>
     </profiles>
@@ -83,7 +83,6 @@
             <!-- 文件拷贝 -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
@@ -122,6 +121,5 @@
             <!--</resource>-->
         </resources>
     </build>
-
 
 </project>
