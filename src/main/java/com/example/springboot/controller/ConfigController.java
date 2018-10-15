@@ -18,14 +18,19 @@ import java.util.Map;
  * 测试多环境配置
  */
 @RestController
-@PropertySource("classpath:/config/api.properties")
+@PropertySource({"classpath:/config/api.properties","classpath:application.properties"})
 public class ConfigController {
 //    defaul.domain = www.fang.com
 //    default.port = 8080
 //    default.local = 127.0.0.1
 
+    //读取api.config 文件
     @Value("${agent.product.detail.domain}")
     private String detailDomain;
+
+    //读取application文件
+    @Value("${server.domain}")
+    private String serverDomain;
 
     @Autowired
     ServerConstant serverConstant;
@@ -38,6 +43,7 @@ public class ConfigController {
     public Object get() {
         Map<Object,Object>  hashMap = new HashMap<>();
         hashMap.put("detailDomain", detailDomain);
+        hashMap.put("serverDomain",serverDomain);
         return FangResponse.buildSuccess(hashMap);
     }
 
