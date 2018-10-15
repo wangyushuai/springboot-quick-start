@@ -18,15 +18,7 @@ import java.util.Map;
  */
 
 @RestController
-@PropertySource({"classpath:/config/produce/config.properties"})
 public class HelloController {
-//    @Value("${test.server}")
-//    private String server;
-//    @Value("${test.port}")
-//    private String port;
-
-    @Autowired
-    ServerConstant serverConstant;
 
     @GetMapping("/hello")
     public FangResponse hello() {
@@ -35,32 +27,12 @@ public class HelloController {
         return new FangResponse(200,"success",list);
     }
 
-
-    @GetMapping("/test_config")
-    public Map<String,Object> testConfig(@RequestParam(value = "id") Integer testId) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("test_id",testId);
-        map.put("server",serverConstant.getServerUrl());
-        map.put("port",serverConstant.getPort());
-        map.put("searchUrl",serverConstant.getSearch());
-        return map;
-    }
-
     @GetMapping("/hello/{askId}")
     public String helloProduct(@PathVariable("askId") String askId) {
         return "askId:" + askId;
     }
 
+    //TODO: 直接返回Map,集合等
 
-    @GetMapping("/test_error")
-    public void testError() {
-        int a= 1;
-        int b = 0;
-        double c = a/b;
-    }
 
-    @GetMapping("/test_ex_hanlder")
-    public void testExceptionHandler() throws CustomerException {
-        throw new CustomerException();
-    }
 }

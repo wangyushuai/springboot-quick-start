@@ -56,9 +56,10 @@
     <profiles>
         <!--开发环境-->
         <profile>
-            <id>dev</id>
+            <id>develop</id>
+            <!--定义配置打包目录属性-->
             <properties>
-                <build.profile.id>dev</build.profile.id>
+                <profiles.active>develop</profiles.active>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -66,9 +67,9 @@
         </profile>
         <!--生产环境-->
         <profile>
-            <id>prod</id>
+            <id>produce</id>
             <properties>
-                <build.profile.id>prod</build.profile.id>
+                <profiles.active>produce</profiles.active>
             </properties>
         </profile>
     </profiles>
@@ -81,6 +82,23 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <!--<filters>-->
+            <!--<filter>src/main/resources/config/${profiles.active}/config.properties</filter>-->
+            <!--<filter>src/main/resources/config/${profiles.active}/server.properties</filter>-->
+        <!--</filters>-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
+                <excludes>
+                    <exclude>config/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/config/${profiles.active}/</directory>
+                <!--<targetPath>src/main/resources/config</targetPath>-->
+            </resource>
+        </resources>
     </build>
 
 
