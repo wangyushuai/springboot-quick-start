@@ -41,9 +41,8 @@ public class ConfigController {
 
 
     @GetMapping("/config_bean")
-    public Map<String,Object> testConfig(@RequestParam(value = "id") Integer testId) {
+    public Map<String,Object> testConfig() {
         Map<String,Object> map = new HashMap<>();
-        map.put("test_id",testId);
         map.put("domain",serverConstant.getDomain());
         map.put("port",serverConstant.getPort());
         map.put("local",serverConstant.getLocal());
