@@ -56,7 +56,7 @@
     <profiles>
         <!--开发环境-->
         <profile>
-            <id>develop</id>
+            <id>dev</id>
             <!--定义配置打包目录属性-->
             <properties>
                 <profiles.active>develop</profiles.active>
@@ -67,12 +67,34 @@
         </profile>
         <!--生产环境-->
         <profile>
-            <id>produce</id>
+            <id>prod</id>
             <properties>
                 <profiles.active>produce</profiles.active>
             </properties>
         </profile>
     </profiles>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources.${build.profile.id}</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
     <build>
@@ -80,6 +102,29 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 文件拷贝 -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/config/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/config/${profiles.active}</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <!--<filters>-->
@@ -91,13 +136,13 @@
                 <directory>src/main/resources</directory>
                 <!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
                 <excludes>
-                    <exclude>config/*</exclude>
+                    <exclude>config/**</exclude>
                 </excludes>
             </resource>
-            <resource>
-                <directory>src/main/resources/config/${profiles.active}/</directory>
-                <!--<targetPath>src/main/resources/config</targetPath>-->
-            </resource>
+            <!--<resource>-->
+                <!--<directory>src/main/resources/config/${profiles.active}/**</directory>-->
+                <!--<targetPath>src/main/resources/</targetPath>-->
+            <!--</resource>-->
         </resources>
     </build>
 

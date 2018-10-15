@@ -18,7 +18,7 @@ import java.util.Map;
  * 测试多环境配置
  */
 @RestController
-//@PropertySource("classpath:/config/produce/api.properties")
+//@PropertySource("classpath:/config/prod/api.properties")
 public class ConfigController {
 //    defaul.domain = www.fang.com
 //    default.port = 8080
