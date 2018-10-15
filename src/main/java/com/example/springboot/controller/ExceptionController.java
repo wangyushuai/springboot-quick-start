@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by wangyushuai@fang.com on 2018/10/15.
+ * 异常处理Demo
  */
 
 @RestController
