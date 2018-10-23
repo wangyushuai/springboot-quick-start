@@ -1,7 +1,7 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.Util.FangResponse;
-import com.example.springboot.Util.ServerSetting;
+import com.example.springboot.Util.ServerSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class ConfigSpringBootController {
 
     @Autowired
-    ServerSetting serverSetting;
+    ServerSettings serverSetting;
 
     @Value("${server.domain}")
     private String appServer;

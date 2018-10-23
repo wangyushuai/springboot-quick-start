@@ -1,8 +1,6 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.Util.FangResponse;
-import com.example.springboot.Util.ServerSetting;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;

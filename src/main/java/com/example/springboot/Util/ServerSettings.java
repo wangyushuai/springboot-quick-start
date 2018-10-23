@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource({"classpath:application.properties"})
 @ConfigurationProperties(prefix = "default")
-public class ServerSetting {
+public class ServerSettings {
 //    defaul.domain = www.fang.com
 //    default.port = 8080
 //    default.local = 127.0.0.1
