@@ -16,7 +16,7 @@ public class FangResponse implements Serializable {
     private final static long serialVersionUID = 1L;
 
     private int status;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)//不为空时,返回
     private Object data;
     private String message;
 
@@ -24,12 +24,12 @@ public class FangResponse implements Serializable {
      * 时间戳
      */
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "lz",timezone = "GMT+8")
-    private Date timestamp;
+    private Date timestamp;//格式化
 
     /**
      * 程序耗时
      */
-    @JsonIgnore
+    @JsonIgnore//不返回注解
     private String time;
 
     public FangResponse(int code, String message, Object data) {

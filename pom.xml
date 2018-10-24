@@ -51,8 +51,31 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!--SpringBoot2.x 整合 mybatis 3.x start -->
+        <!-- Mybatis starter-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.2</version>
+            <!--<scope>runtime</scope>-->
+        </dependency>
+        <!-- MySQL的JDBC驱动包	-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 引入第三方数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+        <!--SpringBoot2.x 整合 mybatis 3.x end -->
+
     </dependencies>
 
+    <!--Maven Profiles 多环境配置 start-->
     <profiles>
         <!--开发环境-->
         <profile>
@@ -107,6 +130,7 @@
             <!--<filter>src/main/resources/config/${profiles.active}/config.properties</filter>-->
             <!--<filter>src/main/resources/config/${profiles.active}/server.properties</filter>-->
         <!--</filters>-->
+        <!--Maven Profiles 多环境配置 start-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -121,5 +145,5 @@
             <!--</resource>-->
         </resources>
     </build>
-
+    <!--Maven Profiles 多环境配置 end-->
 </project>
