@@ -30,4 +30,6 @@ public class MybatisController {
        return FangResponse.buildSuccess(result);
     }
 
+
+
 }

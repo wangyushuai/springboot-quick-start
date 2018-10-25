@@ -16,6 +16,8 @@
         
         4.  LogController: SpringBoot2.x 整合Logback框架（日志处理）
         
+        5.  MybatisController:SpringBoot2.x 整合Mybatis 3.X（数据持久化）
+        
      
 
 # 1. 快速创建SpringBoot项目
@@ -29,8 +31,8 @@
 与C#环境对比如下：
 
 - JDK：jre( ≈ .net CLR，java运行环境，包含了常用的基本的类库（net,util，sql,io,javax.servlet）+ jvm)  + java工具（javac编译，jar打包,javadoc文档,java运行编译后的代码）
-- IDEA:Visual studio
-- maven : nuget
+- IDEA: ≈ Visual studio
+- maven : ≈ nuget
 - tomcat or resin or Jetty: IIS
 
 *补充：java语法与C#非常相近，转换成本较低，C#语法基本上就是在java语法的基础上包了一层层语法糖*
