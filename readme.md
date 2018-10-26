@@ -19,6 +19,9 @@
         5.  MybatisController:SpringBoot2.x 整合Mybatis 3.X（数据持久化）
         
         6. ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf（模板引擎）
+      
+      # 三、 其他Java 基础学习文档
+         博客地址：  https://blog.csdn.net/shuai_wy/article/category/7388774
         
      
 
@@ -214,7 +217,10 @@ spring.profiles.active=dev
     </springProfile>
 ```
 
+#6. SpringBoot2.x 整合 Mybatis 3.X
 
+TODO:
 
+#7. SpringBoot2.x 整合 Thymeleaf
 
 
