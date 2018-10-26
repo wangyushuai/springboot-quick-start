@@ -39,9 +39,8 @@ public class HelloController {
 
 
 
-    //TODO: 接收参数名 和 方法参数名不一致情况
-    //TODO: 直接返回Map,集合等
-    //TODO: Map 接受参数
+    //TODO: 多种返回值类型， 如： 直接返回Map,集合等
+    //TODO: 多种参数类型，如：Map 接受参数，接收参数名 和 方法参数名不一致情况
     //TODO: 实体集接收参数
     //TODO: 模型验证
 

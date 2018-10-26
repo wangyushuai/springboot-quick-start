@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 1. 增加依赖
  * 2. 增加配置
  * 3. 返回页面
+ * 4. Thymeleaf 语法，快速入门 ：https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
  */
 
 @Controller
