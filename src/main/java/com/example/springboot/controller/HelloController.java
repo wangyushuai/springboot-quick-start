@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @decription 测试Http请求
+ * @decription 测试Http请求,API 开发 DEMO
  * Created by wangyushuai@fang.com on 2018/9/26.
  * 参考博客： https://blog.csdn.net/qq_31001665/article/details/71075743
  */
@@ -35,6 +35,9 @@ public class HelloController {
         int askId = Integer.parseInt(request.getParameter("ask_id"));
         return FangResponse.buildSuccess(askId);
     }
+
+
+
 
     //TODO: 接收参数名 和 方法参数名不一致情况
     //TODO: 直接返回Map,集合等
