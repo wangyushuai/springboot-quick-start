@@ -14,6 +14,7 @@ import java.util.Date;
 public class FangResponse implements Serializable {
 
     private final static long serialVersionUID = 1L;
+    private final static int STATUS_SUCCESS = 200;
 
     private int status;
     @JsonInclude(JsonInclude.Include.NON_NULL)//不为空时,返回
@@ -40,7 +41,7 @@ public class FangResponse implements Serializable {
     }
 
     public static FangResponse buildSuccess(Object data) {
-        return new FangResponse(200, "success", data);
+        return new FangResponse(STATUS_SUCCESS, "success", data);
     }
 
     public int getStatus() {

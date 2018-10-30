@@ -1,7 +1,5 @@
 package com.example.springboot.pojo;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 import java.util.Date;
 
 /**
@@ -9,7 +7,7 @@ import java.util.Date;
  * _local_test test_table 表对应的实体集
  */
 public class TestTable {
-    private int id;
+    private Long id;
 
     private String name;
 
@@ -19,11 +17,11 @@ public class TestTable {
     
     private Date createTime;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
