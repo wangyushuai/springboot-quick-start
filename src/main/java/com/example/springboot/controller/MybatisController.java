@@ -13,8 +13,9 @@ import java.util.List;
 
 /**
  * Created by wangyushuai@fang.com on 2018/10/23.
- * SpringBoot2.X 整合 Mybatis 3.x
- * 事务处理
+ * 1. SpringBoot2.X 整合 Mybatis 3.x
+ * 2. 事务处理
+ * 3. demo: 增删查改（curd）及 事务处理
  */
 @RestController
 @RequestMapping("/mybatis/test_table")
@@ -23,11 +24,28 @@ public class MybatisController {
     @Autowired
     TestTableService service;
 
+
+    @PostMapping("/trans_add_error")
+    public FangResponse testTableTransAddError(TestTable testTable) throws Exception {
+        testTable.setCreateTime(new Date());
+        boolean result =  service.transationAddError(testTable);
+        return FangResponse.buildSuccess(result);
+    }
+
+    @PostMapping("/trans_add")
+    public FangResponse testTableTransAdd(TestTable testTable) throws Exception {
+        testTable.setCreateTime(new Date());
+        boolean result =  service.transationAddError(testTable);
+        return FangResponse.buildSuccess(result);
+    }
+
+
+
     @PostMapping("/add")
     public FangResponse testTableAdd(@Valid TestTable testTable) {
-       testTable.setCreateTime(new Date());
-       boolean result =  service.add(testTable);
-       return FangResponse.buildSuccess(result);
+        testTable.setCreateTime(new Date());
+        boolean result =  service.add(testTable);
+        return FangResponse.buildSuccess(result);
     }
 
 

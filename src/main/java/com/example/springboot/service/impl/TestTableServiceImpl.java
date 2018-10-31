@@ -5,6 +5,8 @@ import com.example.springboot.pojo.TestTable;
 import com.example.springboot.service.TestTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +20,21 @@ public class TestTableServiceImpl implements TestTableService {
 
     @Autowired
     TestTableMappler testTableMappler;
+
+    @Override
+    public boolean transationAddError(TestTable testTable) throws Exception {
+        testTable.setName("服务异常，未使用事务");
+        int result = testTableMappler.insert(testTable);
+        throw new Exception();//模拟服务异常的例子
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean transationAdd(TestTable testTable) throws Exception {
+        testTable.setName("服务异常,使用事务");
+        testTableMappler.insert(testTable);
+        throw  new Exception(); //模拟服务异常
+    }
 
     @Override
     public boolean add(TestTable testTable) {

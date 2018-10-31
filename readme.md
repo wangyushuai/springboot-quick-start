@@ -6,19 +6,21 @@
         
         2. springboot2.x快速入门（搭建、开发、部署，从0-1），
         
-        3. springboot2.x整合常用业务场景（API开发、日志、异常、多环境配置等场景）
+        3. springboot2.x整合常用业务场景（API开发、数据持久化、nosql、日志、异常、多环境配置等场景）
         
       # 二、 程序目录（常用业务场景）
       
         1.  HelloController： API编写 及 常用注解
         
-        2.  ConfigXXXController:   多环境配置 及 读取配置
+        2.  ConfigXXXController: 多环境配置 及 读取配置
         
-        3.  ExceptionController：  异常处理（自定义异常及异常捕获）
+        3.  ExceptionController： 异常处理（自定义异常及异常捕获）
         
-        4.  LogController: SpringBoot2.x 整合Logback框架（日志处理）
+        4.  LogController:  SpringBoot2.x 整合Logback框架（日志处理）
         
-        5.  MybatisController:SpringBoot2.x 整合Mybatis 3.X（数据持久化）
+        5.  MybatisController:  SpringBoot2.x 整合Mybatis 3.X（数据持久化）
+        
+        6.  MybatisController:  SpringBoot2.x 整合Mybatis 事务处理
         
         6. ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf（模板引擎）
       
