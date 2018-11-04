@@ -1,5 +1,6 @@
 package com.example.springboot.pojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Date;
 public class TestTable {
     private Long id;
 
+    @NotNull(message = "name 值不能为空")
     private String name;
 
     private String phone;

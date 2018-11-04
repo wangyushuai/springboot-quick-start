@@ -5,6 +5,7 @@ import com.example.springboot.pojo.TestTable;
 import com.example.springboot.service.TestTableService;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,8 +34,14 @@ public class MybatisController {
     }
 
     @PostMapping("/trans_add")
-    public FangResponse testTableTransAdd(TestTable testTable) throws Exception {
+    public FangResponse testTableTransAdd(@Valid TestTable testTable, BindingResult bindingResult) throws Exception {
         testTable.setCreateTime(new Date());
+
+        //添加模型验证类
+        if (bindingResult.hasErrors()){
+            return new FangResponse(400,"error",bindingResult.getFieldError().getDefaultMessage());
+        }
+
         boolean result =  service.transationAddError(testTable);
         return FangResponse.buildSuccess(result);
     }

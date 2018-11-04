@@ -44,6 +44,10 @@ public class FangResponse implements Serializable {
         return new FangResponse(STATUS_SUCCESS, "success", data);
     }
 
+//    public static FangResponse buildError(Object data) {
+//        return new FangResponse(STATUS_SUCCESS, "success", data);
+//    }
+
     public int getStatus() {
         return status;
     }
