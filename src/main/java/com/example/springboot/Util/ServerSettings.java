@@ -24,7 +24,7 @@ public class ServerSettings {
     private int port;
     private String local;
 
-    @Value("evn.config")
+    @Value("${evn.config}")
     private String evnConfig;
 
     public String getEvnConfig() {

@@ -43,6 +43,7 @@ public class ConfigSpringBootController {
         map.put("domain", serverSetting.getDomain());
         map.put("port", serverSetting.getPort());
         map.put("local", serverSetting.getLocal());
+        map.put("evn_config", serverSetting.getEvnConfig());
         return map;
     }
 }
