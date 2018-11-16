@@ -222,10 +222,14 @@ spring.profiles.active=dev
     </springProfile>
 ```
 
-#6. SpringBoot2.x 整合 Mybatis 3.X
+# 6. SpringBoot2.x 整合 Mybatis 3.X
 
 TODO:
 
-#7. SpringBoot2.x 整合 Thymeleaf
+# 7. SpringBoot2.x 整合 Thymeleaf
+
+# 8. SpringBoot2.x 整合 分布式缓存 Redis
+## 8.1 Redis工具类
+## 8.2 Spring AOP 给Redis key 统一增加前缀 
 
 
