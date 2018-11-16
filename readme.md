@@ -20,10 +20,13 @@
         
         5.  MybatisController:  SpringBoot2.x 整合Mybatis 3.X（数据持久化）
         
-        6.  MybatisController:  SpringBoot2.x 整合Mybatis 事务处理
+        5.1  MybatisController:  SpringBoot2.x 整合Mybatis 事务处理
         
-        6. ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf（模板引擎）
+        6.  ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf（模板引擎）
       
+        7.  RedisController : SpringBoot2.x 整合 Redis4.X (分布式缓存)
+        
+        7.1  RedisClient （Redis工具类） RedisAspect（Spring AOP 增加项目前缀）
       # 三、 其他Java 基础学习文档
       
          博客地址：  https://blog.csdn.net/shuai_wy/article/category/7388774
