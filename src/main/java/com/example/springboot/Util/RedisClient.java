@@ -21,13 +21,7 @@ public class RedisClient {
 	@Autowired
 	private StringRedisTemplate redisTpl;
 
-	@Value("${com.example.springboot.redis.pre-name}")
-	private String preRedisPreName;
 
-	private String getProjectRedisPreName(String key ) {
-		return preRedisPreName + ":" + key;
-	}
-	
 	/**
 	 * 功能描述：设置key-value到redis中
 	 * @param key
@@ -36,7 +30,7 @@ public class RedisClient {
 	 */
 	public boolean set(String key ,String value){
 		try{
-			redisTpl.opsForValue().set(getProjectRedisPreName(key), value);
+			redisTpl.opsForValue().set(key, value);
 			return true;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -54,7 +48,7 @@ public class RedisClient {
 	 */
 	public boolean set(String key,String value,int time) {
 		try	 {
-			redisTpl.opsForValue().set(getProjectRedisPreName(key),value,time, TimeUnit.SECONDS);
+			redisTpl.opsForValue().set(key,value,time, TimeUnit.SECONDS);
 			return true;
 		} catch (Exception ex) {
 			return false;
@@ -69,7 +63,7 @@ public class RedisClient {
 	 * @return
 	 */
 	public String get(String key){
-		return redisTpl.opsForValue().get(getProjectRedisPreName(key));
+		return redisTpl.opsForValue().get(key);
 	}
 
 

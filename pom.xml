@@ -73,6 +73,20 @@
         </dependency>
         <!--SpringBoot2.x 整合 mybatis 3.x end -->
 
+        <!--SpringBootx2.x 整合 redis 4.x start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--SpringBootx2.x 整合 redis 4.x start -->
+
+        <!--Spring AOP start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--Spring AOP end-->
+
     </dependencies>
 
     <!--Maven Profiles 多环境配置 start-->
