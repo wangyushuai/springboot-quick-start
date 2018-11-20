@@ -3,7 +3,9 @@ package com.example.springboot.service.impl;
 import com.example.springboot.mapper.TestTableMappler;
 import com.example.springboot.pojo.TestTable;
 import com.example.springboot.service.TestTableService;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +27,8 @@ public class TestTableServiceImpl implements TestTableService {
     public boolean transationAddError(TestTable testTable) throws Exception {
         testTable.setName("服务异常，未使用事务");
         int result = testTableMappler.insert(testTable);
-        throw new Exception();//模拟服务异常的例子
+        //模拟服务异常的例子
+        throw new Exception();
     }
 
     @Override
