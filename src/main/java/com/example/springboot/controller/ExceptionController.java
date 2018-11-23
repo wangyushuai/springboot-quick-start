@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.Util.CustomerException;
+import com.example.springboot.util.exception.CustomerException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,9 +1,8 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.Util.FangResponse;
-import com.example.springboot.Util.RedisClient;
+import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.redis.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

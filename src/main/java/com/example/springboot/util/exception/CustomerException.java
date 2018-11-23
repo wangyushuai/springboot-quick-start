@@ -1,6 +1,4 @@
-package com.example.springboot.Util;
-
-import org.springframework.web.bind.annotation.ExceptionHandler;
+package com.example.springboot.util.exception;
 
 /**
  * Created by wangyushuai@fang.com on 2018/9/26.

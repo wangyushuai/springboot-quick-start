@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.Util.FangResponse;
+import com.example.springboot.util.response.FangResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

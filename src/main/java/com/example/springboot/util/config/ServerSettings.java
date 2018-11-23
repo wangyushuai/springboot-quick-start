@@ -1,4 +1,4 @@
-package com.example.springboot.Util;
+package com.example.springboot.util.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;

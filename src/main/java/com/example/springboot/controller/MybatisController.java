@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.Util.FangResponse;
+import com.example.springboot.util.response.FangResponse;
 import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
 import org.springframework.beans.factory.annotation.Autowired;
