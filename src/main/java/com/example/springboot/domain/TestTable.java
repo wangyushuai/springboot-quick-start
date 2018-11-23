@@ -1,4 +1,4 @@
-package com.example.springboot.pojo;
+package com.example.springboot.domain;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;

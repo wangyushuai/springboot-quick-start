@@ -1,9 +1,8 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.Util.FangResponse;
-import com.example.springboot.pojo.TestTable;
+import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;

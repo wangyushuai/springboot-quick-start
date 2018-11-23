@@ -1,7 +1,6 @@
 package com.example.springboot.service;
 
-import com.example.springboot.pojo.TestTable;
-import org.springframework.stereotype.Service;
+import com.example.springboot.domain.TestTable;
 
 import java.util.List;
 

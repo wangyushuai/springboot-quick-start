@@ -1,11 +1,9 @@
 package com.example.springboot.service.impl;
 
 import com.example.springboot.mapper.TestTableMappler;
-import com.example.springboot.pojo.TestTable;
+import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

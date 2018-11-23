@@ -1,8 +1,7 @@
 package com.example.springboot.mapper;
 
-import com.example.springboot.pojo.TestTable;
+import com.example.springboot.domain.TestTable;
 import org.apache.ibatis.annotations.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
