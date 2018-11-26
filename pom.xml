@@ -46,10 +46,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--SpringBoot2.x 整合 thymeleaf start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!--SpringBoot2.x 整合 thymeleaf end-->
 
         <!--SpringBoot2.x 整合 mybatis 3.x start -->
         <!-- Mybatis starter-->

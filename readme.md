@@ -22,11 +22,13 @@
         
         5.1  MybatisController:  SpringBoot2.x 整合Mybatis 事务处理
         
-        6.  ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf（模板引擎）
+        6.  ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf3.0（模板引擎）
       
-        7.  RedisController : SpringBoot2.x 整合 Redis4.X (分布式缓存)
+        7.  RedisController: SpringBoot2.x 整合 Redis4.X (分布式缓存)
         
-        7.1  RedisClient （Redis工具类） RedisAspect（Spring AOP 增加项目前缀）
+        7.1  RedisClient: （Redis工具类） RedisAspect（Spring AOP 增加项目前缀）
+        
+        7.2  JsonUtils: Json字符串序列化与反序列化工具类
         
         8. TimeTakesAspect: 利用AOP 在controller api中添加程序运行耗时
       # 三、 其他Java 基础学习文档
@@ -166,9 +168,6 @@ spring.profiles.active=dev
 
 
 
-
-
-
 # 4. 异常处理
 ## 4.1 SpringBoot2.X服务端异常讲解和配置全局异常
 
@@ -233,7 +232,52 @@ spring.profiles.active=dev
 
 TODO:
 
-# 7. SpringBoot2.x 整合 Thymeleaf
+# 7. SpringBoot2.x 整合 Thymeleaf 3.0
+## 7.1 添加thymeleaf依赖
+```
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+## 7.2 配置文件开启 thymeleaf
+```
+# SpringBoot2.x 整合thymeleaf
+#开发时关闭缓存,不然没法看到实时页面
+spring.thymeleaf.cache=false
+spring.thymeleaf.mode=HTML5
+#前缀
+spring.thymeleaf.prefix=classpath:/templates/
+#编码
+spring.thymeleaf.encoding=UTF-8
+#类型
+#spring.thymeleaf.content-type=text/html
+#名称的后缀
+spring.thymeleaf.suffix=.html
+```
+## 7.3 控制器返回页面路径
+```
+@GetMapping("/hello_page")
+public Object helloPage() {
+    return "/templates/customerError";
+}
+```
+## 7.4 控制器传值至页面
+1. 页面
+```
+<h3  th:text="${hello}">hello</h3>
+```
+2. 控制器
+```
+@GetMapping("/hello_data_page")
+public Object helloPage(ModelMap modelMap) {
+    modelMap.addAttribute("hello","hello SpringBoot2.x !");
+    return "tl/hello_data_page";
+}
+```
+
+
+
 
 # 8. SpringBoot2.x 整合 分布式缓存 Redis
 ## 8.1 Redis工具类

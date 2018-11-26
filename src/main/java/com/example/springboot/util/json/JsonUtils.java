@@ -8,7 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *  Json字符串转换工具类
- *  Created by wangyushuai@fang.com on 2018/10/26.
+ * @author wangyushuai@fang.com
+ * @date 2018/10/26
  */
 public class JsonUtils {
 
