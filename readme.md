@@ -27,12 +27,14 @@
         7.  RedisController : SpringBoot2.x 整合 Redis4.X (分布式缓存)
         
         7.1  RedisClient （Redis工具类） RedisAspect（Spring AOP 增加项目前缀）
+        
+        8 TimeTakesAspect: 利用AOP 在controller api中添加程序运行耗时
       # 三、 其他Java 基础学习文档
       
          博客地址：  https://blog.csdn.net/shuai_wy/article/category/7388774
 
 # 更新日志
-1. 新增节点： 新增AOP计时         
+1. 新增节点： 新增AOP记录controller api 耗时        
      
 
 # 1. 快速创建SpringBoot项目
