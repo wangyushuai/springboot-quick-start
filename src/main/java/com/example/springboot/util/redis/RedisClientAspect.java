@@ -3,6 +3,7 @@ package com.example.springboot.util.redis;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,20 +28,21 @@ public class RedisClientAspect {
     /**
      * @description: 定义切点-切点 为RedisClient全部方法
      * execution 参数介绍：
-     * 1. public * *(..) —— * 表示任意返回值，前面可能有public, 一般省略
+     * 1. public * *(..) ——  第一个* 表示任意返回值，前面可能有public, 一般省略
      * 2. * *.*(..) —— 第二个 * 表示任意包
      * 3. * *.*(..) —— 第三个 *  表示任意方法
      * 4. * *.*(..) —— (..) 表示任意参数
+     * 5. 参考文档： https://blog.csdn.net/weixin_40315550/article/details/78941291
      */
     @Pointcut("execution(* com.example.springboot.util.redis.RedisClient.*(..))")
     public void pointCutAllMethod() {}
 
     /**
-     * 切入 Redis工具类方法，给Key增加前缀
+     * @description 切入 Redis工具类方法，给Key增加前缀
+     * 只有环绕通知中，可以修改参数
      * @param proceedingJoinPoint
      * @return
      * @throws Throwable
-     * 补充： 注解其他使用方式：   //@Around("execution(* com.example.springboot.util.redis.RedisClient.*(..))")
      */
     @Around("pointCutAllMethod()")
     public Object addKeyPrevStr(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
@@ -49,6 +51,11 @@ public class RedisClientAspect {
         Object result = proceedingJoinPoint.proceed(args);
         return result;
     }
+
+
+
+
+
 
 
 

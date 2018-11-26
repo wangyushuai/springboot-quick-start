@@ -22,16 +22,16 @@ public class FangResponse implements Serializable {
     private String message;
 
     /**
-     * 时间戳
+     * 时间戳并格式化
      */
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "lz",timezone = "GMT+8")
-    private Date timestamp;//格式化
+    private Date timestamp;
 
     /**
      * 程序耗时
      */
-    @JsonIgnore//不返回注解
-    private String time;
+    //@JsonIgnore//不返回注解
+    private long time;
 
     public FangResponse(int code, String message, Object data) {
         super();
@@ -81,10 +81,10 @@ public class FangResponse implements Serializable {
     }
 
     public String getTime() {
-        return time;
+        return time + "ms";
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
