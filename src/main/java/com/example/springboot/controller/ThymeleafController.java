@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class ThymeleafController {
 
-    @GetMapping("/hello_page")
+    @GetMapping(value = "/hello_page")
     public Object helloPage() {
         return "/templates/customerError";
     }
