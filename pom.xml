@@ -90,6 +90,14 @@
         </dependency>
         <!--Spring AOP end-->
 
+        <!--SpringBoot2.x 整合 Actuator监控 start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--SpringBoot2.x 整合 Actuator监控 end -->
+
+
     </dependencies>
 
     <!--Maven Profiles 多环境配置 start-->

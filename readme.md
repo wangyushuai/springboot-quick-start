@@ -31,6 +31,8 @@
         7.2  JsonUtils: Json字符串序列化与反序列化工具类
         
         8. TimeTakesAspect: 利用AOP 在controller api中添加程序运行耗时
+        
+        9. SpringBoot2.x 整合 Actuator监控
       # 三、 其他Java 基础学习文档
       
          博客地址：  https://blog.csdn.net/shuai_wy/article/category/7388774
@@ -283,4 +285,27 @@ public Object helloPage(ModelMap modelMap) {
 ## 8.1 Redis工具类
 ## 8.2 Spring AOP 给Redis key 统一增加前缀 
 
+# 9. SpringBoot2.x  整合Actuator监控
+1. 介绍什么是actuator
+    官方介绍：
+        Spring Boot包含许多附加功能，可帮助您在将应用程序投入生产时监视和管理应用程序。 可以选择使用HTTP端点或JMX来管理和监控您的应用程序，自动应用于审计，健康和指标收集;
+
+    一句话：springboot提供用于监控和管理生产环境的模块
+    官方文档：https://docs.spring.io/spring-boot/docs/2.1.0.BUILD-SNAPSHOT/reference/htmlsingle/#production-ready
+2. 加入依赖
+```
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-actuator</artifactId>  
+</dependency> 
+
+```
+3. 加入上述依赖后，访问几个url 同时可以在配置中，添加配置，限定可访问内容
+```
+/actuator/health
+/actuator/info
+/actuator
+```
+
+		
 
