@@ -16,7 +16,11 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    @GetMapping("/")
+    /**
+     * 欢迎页，路由支持多个参数
+     * @return
+     */
+    @GetMapping(value = {"/","/hello"})
     public FangResponse hello() {
         List<String> list = new ArrayList<>();
         list.add("hello world");
