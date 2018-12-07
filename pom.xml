@@ -164,10 +164,11 @@
                     <exclude>config/**</exclude>
                 </excludes>
             </resource>
-            <resource>
-                <directory>src/main/resources/config/${profiles.active}/**</directory>
-                <targetPath>src/main/resources/</targetPath>
-            </resource>
+            <!--未生效-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources/config/${profiles.active}/**</directory>-->
+                <!--<targetPath>src/main/resources/</targetPath>-->
+            <!--</resource>-->
         </resources>
     </build>
     <!--Maven Profiles 多环境配置 end-->

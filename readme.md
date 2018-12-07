@@ -134,9 +134,7 @@ private String xx;
 ### 3.1.2 配置文件自动映射成实体集
 1. 配置实体集ServerSettings 需添加注解
 
-
 ```
-
 @Component
 @PropertySource({"classpath:/config/config.properties","classpath:/config/server.properties"})
 @ConfigurationProperties(prefix = "ask")
@@ -157,17 +155,102 @@ private String xx;
     - applicaiton-pro.properties
 
 在 applicaiton.properties 选择要激活的文件，如：使用测试配置文件
-
-
 ```
 // 激活测试配置
 spring.profiles.active=dev 
 ```
-所以， 需要区分环境的配置，可以防止 application-{}.properties中，通用配置可以放到 applicaition.properties中。
+所以， 需要区分环境的配置，可以放置 application-{profile}.properties中，通用配置可以放到 applicaition.properties中。
+
+也可以在运行的时候，执行如下命令： 
+java -jar xxx.jar --spring.profile.active=dev
+java -jar xxx.jar --spring.profile.active=prod
 
 
 ### 3.2.2 方式二： 通过maven构建多环境配置
+**实现目标：** 我们在程序中，ConfigMavenProfile Demo中使用了 @PropertySource({"classpath:/config/api.properties"})了，
+Resource/config 目录下，有两个环境 dev/prod， 我们需要将激活的环境配置文件copy 到 config目录下， 我们将使用以下步骤实现。
 
+1. porm.xml 文件中配置多个profile
+```
+ <!--Maven Profiles 多环境配置 start-->
+    <profiles>
+        <!--开发环境-->
+        <profile>
+            <id>dev</id>
+            <!--定义配置打包目录属性-->
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--生产环境-->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+```
+2. 使用文件copy插件
+- 配置 maven copy 插件，使用我们选择激活的路径—— src/main/resources/config/${profiles.active}， copy 至 ${project.build.outputDirectory}/config/ 路径下。
+
+补充： 可能有同学对 **${profiles.active}** 不知道是什么意思,${profiles.active} 是我们在  <profile> <properties> 标签下定义的常量
+
+```
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 文件拷贝 -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/config/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/config/${profiles.active}</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <!--<filters>-->
+            <!--<filter>src/main/resources/config/${profiles.active}/config.properties</filter>-->
+            <!--<filter>src/main/resources/config/${profiles.active}/server.properties</filter>-->
+        <!--</filters>-->
+        <!--Maven Profiles 多环境配置 start-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
+                <excludes>
+                    <exclude>config/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+    <!--Maven Profiles 多环境配置 end-->
+
+```
+
+3. package 打包指定 profile
+mvn package –P prod
 
 
 # 4. 异常处理
