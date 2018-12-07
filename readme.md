@@ -113,13 +113,13 @@ src/main/resources
 （注意项目名，tomcat下可以部署多个项目的）
 
 
-# 2 DevTool热部署
+# 1 DevTool热部署
 
 引入jar包后，不用重新启动，IDEA环境下rebuild则可以启动生效
 
-# 3 SpringBoot 配置文件
-## 3.1 读取配置文件
-### 3.1.1 注解读取
+# 2 SpringBoot 配置文件
+## 2.1 读取配置文件
+### 2.1.1 注解读取
 1. Controller上面配置 
 ```
 @PropertySource({"classpath":resource.property})
@@ -131,7 +131,7 @@ src/main/resources
 private String xx;
 ```
 
-### 3.1.2 配置文件自动映射成实体集
+### 2.1.2 配置文件自动映射成实体集
 1. 配置实体集ServerSettings 需添加注解
 
 ```
@@ -146,8 +146,8 @@ private String xx;
 3. @ConfigurationProperties： 添加前缀，注意添加前缀之后，注入bean的方式，属性名称和配置文件里面的key一一对应，就不用加@Value 这个注解； 如果不一样，就要加 @value("${XXX}"，xxx表示全名比如： ask.search)
 
 
-## 3.2 springboot多环境配置
-### 3.2.1 方式一：spring.profiles.active
+## 2.2 springboot多环境配置
+### 2.2.1 方式一：spring.profiles.active
 
 - resource
     - applicaition.properties
@@ -166,7 +166,7 @@ java -jar xxx.jar --spring.profile.active=dev
 java -jar xxx.jar --spring.profile.active=prod
 
 
-### 3.2.2 方式二： 通过maven构建多环境配置
+### 2.2.2 方式二： 通过maven构建多环境配置
 **实现目标：** 我们在程序中，ConfigMavenProfile Demo中使用了 @PropertySource({"classpath:/config/api.properties"})了，
 Resource/config 目录下，有两个环境 dev/prod， 我们需要将激活的环境配置文件copy 到 config目录下， 我们将使用以下步骤实现。
 
@@ -253,8 +253,8 @@ Resource/config 目录下，有两个环境 dev/prod， 我们需要将激活的
 mvn package –P prod
 
 
-# 4. 异常处理
-## 4.1 SpringBoot2.X服务端异常讲解和配置全局异常
+# 3. 异常处理
+## 3.1 SpringBoot2.X服务端异常讲解和配置全局异常
 
 1. 增加异常处理类 ExceptionHandler
 
@@ -267,8 +267,8 @@ mvn package –P prod
 
 
 
-# 5. 日志处理
-## 5.1. SpringBoot整合LogBack日志框架
+# 4. 日志处理
+## 4.1. SpringBoot整合LogBack日志框架
 
 1. 常用处理java的日志组件 slf4j,log4j,logback,common-logging 等
 
@@ -313,19 +313,19 @@ mvn package –P prod
     </springProfile>
 ```
 
-# 6. SpringBoot2.x 整合 Mybatis 3.X
+# 5. SpringBoot2.x 整合 Mybatis 3.X
 
 TODO:
 
-# 7. SpringBoot2.x 整合 Thymeleaf 3.0
-## 7.1 添加thymeleaf依赖
+# 6. SpringBoot2.x 整合 Thymeleaf 3.0
+## 6.1 添加thymeleaf依赖
 ```
  <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
 ```
-## 7.2 配置文件开启 thymeleaf
+## 6.2 配置文件开启 thymeleaf
 ```
 # SpringBoot2.x 整合thymeleaf
 #开发时关闭缓存,不然没法看到实时页面
@@ -340,14 +340,14 @@ spring.thymeleaf.encoding=UTF-8
 #名称的后缀
 spring.thymeleaf.suffix=.html
 ```
-## 7.3 控制器返回页面路径
+## 6.3 控制器返回页面路径
 ```
 @GetMapping("/hello_page")
 public Object helloPage() {
     return "/templates/customerError";
 }
 ```
-## 7.4 控制器传值至页面
+## 6.4 控制器传值至页面
 1. 页面
 ```
 <h3  th:text="${hello}">hello</h3>
@@ -364,11 +364,11 @@ public Object helloPage(ModelMap modelMap) {
 
 
 
-# 8. SpringBoot2.x 整合 分布式缓存 Redis
-## 8.1 Redis工具类
-## 8.2 Spring AOP 给Redis key 统一增加前缀 
+# 7. SpringBoot2.x 整合 分布式缓存 Redis
+## 7.1 Redis工具类
+## 7.2 Spring AOP 给Redis key 统一增加前缀 
 
-# 9. SpringBoot2.x  整合Actuator监控
+# 8. SpringBoot2.x  整合Actuator监控
 1. 介绍什么是actuator
     官方介绍：
         Spring Boot包含许多附加功能，可帮助您在将应用程序投入生产时监视和管理应用程序。 可以选择使用HTTP端点或JMX来管理和监控您的应用程序，自动应用于审计，健康和指标收集;
