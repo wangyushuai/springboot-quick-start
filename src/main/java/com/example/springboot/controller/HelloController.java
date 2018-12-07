@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public FangResponse hello() {
         List<String> list = new ArrayList<>();
         list.add("hello world");
