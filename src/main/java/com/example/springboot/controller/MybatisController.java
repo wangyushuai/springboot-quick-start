@@ -80,4 +80,9 @@ public class  MybatisController {
         return FangResponse.buildSuccess(list);
     }
 
+    @GetMapping("/dynamic_table")
+    public FangResponse testDynamicTableSelectOne(@RequestParam("id") Long id) {
+        TestTable one =service.dynamicSelectOne(id,"test_table");
+        return FangResponse.buildSuccess(one);
+    }
 }

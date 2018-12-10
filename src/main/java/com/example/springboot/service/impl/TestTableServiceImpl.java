@@ -62,4 +62,9 @@ public class TestTableServiceImpl implements TestTableService {
     public TestTable selectOne(Long id) {
         return testTableMappler.selectOne(id);
     }
+
+    @Override
+    public TestTable dynamicSelectOne(Long id, String tableName) {
+        return testTableMappler.dynamicSelectOne(id,tableName);
+    }
 }

@@ -41,4 +41,11 @@ public interface TestTableMappler {
     int update(TestTable testTable);
 
 
+
+    @Select("SELECT id,name,phone,create_time FROM ${test_table} WHERE id = #{id}")
+    @Results({
+            @Result(column = "create_time",property = "createTime")
+    })
+    TestTable dynamicSelectOne(@Param("id") Long id,@Param("test_table") String testTable);
+
 }

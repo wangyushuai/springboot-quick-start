@@ -56,5 +56,10 @@ public interface TestTableService {
      */
     TestTable selectOne(Long id);
 
+    /**
+     * 动态传递表名查询
+     * @return
+     */
+    TestTable dynamicSelectOne(Long id,String tableName);
 
 }
