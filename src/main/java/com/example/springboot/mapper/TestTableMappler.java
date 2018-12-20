@@ -3,6 +3,7 @@ package com.example.springboot.mapper;
 import com.example.springboot.domain.TestTable;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * Mybatis 语法介绍： http://www.mybatis.org/mybatis-3/zh/java-api.html
  */
 
-@Component
+@Repository
 public interface TestTableMappler {
 
     @Insert("insert into test_table(`name`,`phone`,`create_time`,`age`) values(#{name},#{phone},#{createTime},#{age})")
