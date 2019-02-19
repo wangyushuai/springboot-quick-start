@@ -74,6 +74,13 @@
             <artifactId>druid</artifactId>
             <version>1.1.6</version>
         </dependency>
+        <!-- mybatis 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
         <!--SpringBoot2.x 整合 mybatis 3.x end -->
 
         <!--SpringBootx2.x 整合 redis 4.x start -->
@@ -91,10 +98,10 @@
         <!--Spring AOP end-->
 
         <!--SpringBoot2.x 整合邮件发送工具类 start -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-mail</artifactId>-->
+        <!--</dependency>-->
         <!--SpringBoot2.x 整合邮件发送工具类 end -->
 
         <!--SpringBoot2.x 整合 Actuator监控 start -->
@@ -112,6 +119,8 @@
             <version>2.1.1</version>
         </dependency>
         <!--SpringBoot2.x 整合SpringBoot-admin end-->
+
+
 
     </dependencies>
 
@@ -143,7 +152,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- 文件拷贝 -->
+            <!-- 文件拷贝，多环境配置-copy文件到指定路径 -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>

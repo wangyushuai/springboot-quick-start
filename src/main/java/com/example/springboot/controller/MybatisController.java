@@ -3,13 +3,17 @@ package com.example.springboot.controller;
 import com.example.springboot.util.response.FangResponse;
 import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
+import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wangyushuai@fang.com on 2018/10/23.
@@ -18,7 +22,7 @@ import java.util.List;
  * 3. demo: 增删查改（curd）及 事务处理
  */
 @RestController
-@RequestMapping("/mybatis/test_table")
+@RequestMapping("/mybatis/test_tables")
 public class  MybatisController {
 
     @Autowired
@@ -55,12 +59,12 @@ public class  MybatisController {
     }
 
 
-    @PostMapping("/delete")
+    @Delete("/delete")
     public FangResponse testTableDelete(@RequestParam("id")  Long id) {
         return FangResponse.buildSuccess(service.delete(id));
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public FangResponse testTableUpdate(TestTable testTable) {
         return FangResponse.buildSuccess(service.update(testTable));
     }
@@ -85,4 +89,16 @@ public class  MybatisController {
         TestTable one =service.dynamicSelectOne(id,"test_table");
         return FangResponse.buildSuccess(one);
     }
+
+
+    @GetMapping("/select_all_page")
+    public FangResponse testTableByPage(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+                                        @RequestParam(value = "pageSize",required = false,defaultValue = "2") int pageSize) {
+        PageInfo<TestTable> pageInfo = service.selectByPage(pageNum,pageSize);
+        Map<String,Object> result = new HashMap<>();
+        result.put("list",pageInfo.getList());
+        result.put("total",pageInfo.getTotal());
+        return FangResponse.buildSuccess(result);
+    }
+
 }

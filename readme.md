@@ -22,6 +22,10 @@
         
         5.1  MybatisController:  SpringBoot2.x 整合Mybatis 事务处理
         
+        5.2  MybatisController: Mybatis PageHelper 分页查询（PageHelper 原理也是过滤器）
+        
+        5.3  UpdateLogInterceptor: 基于 Mybatis Interceptor（过滤器） 实现操作日志的记录
+        
         6.  ThyemeleafControoler: SpringBoot2.x 整合 Thymeleaf3.0（模板引擎）
       
         7.  RedisController: SpringBoot2.x 整合 Redis4.X (分布式缓存)
@@ -41,7 +45,17 @@
          博客地址：  https://blog.csdn.net/shuai_wy/article/category/7388774
 
 # 更新日志
-1. 新增节点： 新增AOP记录controller api 耗时        
+
+todo: 接口路由未以 Restful格式标准命名，请留意，有时间会更新一下。
+
+2019/2/19: 更新Mybatis PageHelper 分页， 更新Mybatis interceptor 过滤器记录用户更新日志
+
+old record: 新增节点： 新增AOP记录controller api 耗时
+
+# Demo 运行步骤
+1. 执行DOC中的sql文件，mybatis 相关的DEMO 便可正常运行
+2. 打开porm.xml 文件中 注释掉的监控依赖，监控DEMO 便可正常运行
+        
      
 
 # 1. 快速创建SpringBoot项目

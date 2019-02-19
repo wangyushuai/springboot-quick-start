@@ -1,6 +1,7 @@
 package com.example.springboot.service;
 
 import com.example.springboot.domain.TestTable;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -61,5 +62,15 @@ public interface TestTableService {
      * @return
      */
     TestTable dynamicSelectOne(Long id,String tableName);
+
+
+    /**
+     *  分页查询
+     *  基于 mybatis PageHelper
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<TestTable> selectByPage(int pageNum, int pageSize);
 
 }

@@ -3,6 +3,8 @@ package com.example.springboot.service.impl;
 import com.example.springboot.mapper.TestTableMappler;
 import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -66,5 +68,20 @@ public class TestTableServiceImpl implements TestTableService {
     @Override
     public TestTable dynamicSelectOne(Long id, String tableName) {
         return testTableMappler.dynamicSelectOne(id,tableName);
+    }
+
+    /**
+     * 分页查询
+     * 基于 mybatis PageHelper
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public PageInfo<TestTable> selectByPage(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        PageInfo<TestTable>  pageInfo = new PageInfo<>(testTableMappler.selectAll());
+        return pageInfo;
     }
 }
