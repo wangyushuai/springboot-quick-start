@@ -19,7 +19,7 @@ public class ThymeleafController {
 
     @GetMapping(value = "/hello_page")
     public Object helloPage() {
-        return "/templates/customerError";
+        return "/customerError";
     }
 
     @GetMapping("/hello_data_page")
