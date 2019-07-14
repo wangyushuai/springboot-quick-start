@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +21,10 @@ public class HelloController {
      * @return
      */
     @GetMapping(value = {"/","/hello"})
-    public FangResponse hello() {
+    public RestResponse hello() {
         List<String> list = new ArrayList<>();
         list.add("hello world");
-        return new FangResponse(200,"success",list);
+        return new RestResponse(200,"success",list);
     }
 
     //Restful API 规范
@@ -37,7 +37,7 @@ public class HelloController {
     @GetMapping("/hello/request")
     public Object helloRequest(HttpServletRequest request) {
         int askId = Integer.parseInt(request.getParameter("ask_id"));
-        return FangResponse.buildSuccess(askId);
+        return RestResponse.buildSuccess(askId);
     }
 
 

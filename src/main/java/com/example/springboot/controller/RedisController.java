@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import com.example.springboot.util.redis.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +20,13 @@ public class RedisController {
     RedisClient redisClient;
 
     @RequestMapping("/get_value")
-    public FangResponse  getOptsForValue(String key) {
-        return FangResponse.buildSuccess(redisClient.get(key));
+    public RestResponse getOptsForValue(String key) {
+        return RestResponse.buildSuccess(redisClient.get(key));
     }
 
     @RequestMapping("/set_value")
-    public FangResponse setOptsForValue(String key ,String value) {
-        return FangResponse.buildSuccess(redisClient.set(key,value));
+    public RestResponse setOptsForValue(String key , String value) {
+        return RestResponse.buildSuccess(redisClient.set(key,value));
     }
 
 

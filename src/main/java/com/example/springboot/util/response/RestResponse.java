@@ -1,7 +1,6 @@
 package com.example.springboot.util.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
@@ -11,7 +10,7 @@ import java.util.Date;
  * Created by wangyushuai@fang.com on 2018/9/26.
  * Json响应工具类
  */
-public class FangResponse implements Serializable {
+public class RestResponse implements Serializable {
 
     private final static long serialVersionUID = 1L;
     private final static int STATUS_SUCCESS = 200;
@@ -33,19 +32,19 @@ public class FangResponse implements Serializable {
     //@JsonIgnore//不返回注解
     private long time;
 
-    public FangResponse(int code, String message, Object data) {
+    public RestResponse(int code, String message, Object data) {
         super();
         this.status = code;
         this.message = message;
         this.data = data;
     }
 
-    public static FangResponse buildSuccess(Object data) {
-        return new FangResponse(STATUS_SUCCESS, "success", data);
+    public static RestResponse buildSuccess(Object data) {
+        return new RestResponse(STATUS_SUCCESS, "success", data);
     }
 
-//    public static FangResponse buildError(Object data) {
-//        return new FangResponse(STATUS_SUCCESS, "success", data);
+//    public static RestResponse buildError(Object data) {
+//        return new RestResponse(STATUS_SUCCESS, "success", data);
 //    }
 
     public int getStatus() {

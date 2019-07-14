@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import com.example.springboot.util.config.ServerSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ public class ConfigSpringBootController {
      */
     @GetMapping("/config_app")
     public Object getAppConfig() {
-        return FangResponse.buildSuccess(appServer);
+        return RestResponse.buildSuccess(appServer);
     }
 
     /**

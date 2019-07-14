@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +24,6 @@ public class LogController {
         logger.info("this is a info");
         logger.warn("this is a warn");
         logger.error("this is a error");
-        return FangResponse.buildSuccess(null);
+        return RestResponse.buildSuccess(null);
     }
 }

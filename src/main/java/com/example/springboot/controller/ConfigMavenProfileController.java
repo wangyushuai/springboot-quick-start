@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +34,7 @@ public class ConfigMavenProfileController {
     public Object get() {
         Map<Object,Object>  hashMap = new HashMap<>();
         hashMap.put("detailDomain", detailDomain);
-        return FangResponse.buildSuccess(hashMap);
+        return RestResponse.buildSuccess(hashMap);
     }
 
 

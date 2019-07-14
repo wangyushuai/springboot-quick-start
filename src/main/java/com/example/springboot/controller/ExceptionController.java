@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by wangyushuai@fang.com on 2018/10/15.
  * 异常处理Demo
+ * 此处模拟异常请求，抛出异常后，将由我们定义的异常Handler统一处理（方便我们统一处理返回格式）
  */
 
 @RestController

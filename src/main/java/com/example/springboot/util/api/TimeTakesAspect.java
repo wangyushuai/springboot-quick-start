@@ -1,10 +1,9 @@
 package com.example.springboot.util.api;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -40,10 +39,10 @@ public class TimeTakesAspect {
      * @return
      * @throws Throwable
      */
-    @Around("execution(public com.example.springboot.util.response.FangResponse com.example.springboot.controller.*.*(..))")
+    @Around("execution(public com.example.springboot.util.response.RestResponse com.example.springboot.controller.*.*(..))")
     public Object addKeyPrevStr(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTimeMillis  = System.currentTimeMillis();
-        FangResponse response = (FangResponse) proceedingJoinPoint.proceed();
+        RestResponse response = (RestResponse) proceedingJoinPoint.proceed();
         long execTimeMillis = System.currentTimeMillis() - startTimeMillis ;
         response.setTime(execTimeMillis);
         return response;

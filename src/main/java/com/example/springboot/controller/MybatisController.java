@@ -1,6 +1,6 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.FangResponse;
+import com.example.springboot.util.response.RestResponse;
 import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
 import com.github.pagehelper.PageInfo;
@@ -30,75 +30,75 @@ public class  MybatisController {
 
 
     @PostMapping("/trans_add_error")
-    public FangResponse testTableTransAddError(TestTable testTable) throws Exception {
+    public RestResponse testTableTransAddError(TestTable testTable) throws Exception {
         testTable.setCreateTime(new Date());
         boolean result =  service.transationAddError(testTable);
-        return FangResponse.buildSuccess(result);
+        return RestResponse.buildSuccess(result);
     }
 
     @PostMapping("/trans_add")
-    public FangResponse testTableTransAdd(@Valid TestTable testTable, BindingResult bindingResult) throws Exception {
+    public RestResponse testTableTransAdd(@Valid TestTable testTable, BindingResult bindingResult) throws Exception {
         testTable.setCreateTime(new Date());
 
         //添加模型验证类
         if (bindingResult.hasErrors()){
-            return new FangResponse(400,"error",bindingResult.getFieldError().getDefaultMessage());
+            return new RestResponse(400,"error",bindingResult.getFieldError().getDefaultMessage());
         }
 
         boolean result =  service.transationAddError(testTable);
-        return FangResponse.buildSuccess(result);
+        return RestResponse.buildSuccess(result);
     }
 
 
 
     @PostMapping("/add")
-    public FangResponse testTableAdd(@Valid TestTable testTable) {
+    public RestResponse testTableAdd(@Valid TestTable testTable) {
         testTable.setCreateTime(new Date());
         boolean result =  service.add(testTable);
-        return FangResponse.buildSuccess(result);
+        return RestResponse.buildSuccess(result);
     }
 
 
     @Delete("/delete")
-    public FangResponse testTableDelete(@RequestParam("id")  Long id) {
-        return FangResponse.buildSuccess(service.delete(id));
+    public RestResponse testTableDelete(@RequestParam("id")  Long id) {
+        return RestResponse.buildSuccess(service.delete(id));
     }
 
     @PutMapping("/update")
-    public FangResponse testTableUpdate(TestTable testTable) {
-        return FangResponse.buildSuccess(service.update(testTable));
+    public RestResponse testTableUpdate(TestTable testTable) {
+        return RestResponse.buildSuccess(service.update(testTable));
     }
 
 
 
     @GetMapping("/select_one")
-    public FangResponse testTableSelectOne(@RequestParam("id") Long id) {
+    public RestResponse testTableSelectOne(@RequestParam("id") Long id) {
         TestTable testTable = service.selectOne(id);
-        return FangResponse.buildSuccess(testTable);
+        return RestResponse.buildSuccess(testTable);
     }
 
 
     @GetMapping("/select_all")
-    public FangResponse testTableSelectAll() {
+    public RestResponse testTableSelectAll() {
         List<TestTable> list = service.selectAll();
-        return FangResponse.buildSuccess(list);
+        return RestResponse.buildSuccess(list);
     }
 
     @GetMapping("/dynamic_table")
-    public FangResponse testDynamicTableSelectOne(@RequestParam("id") Long id) {
+    public RestResponse testDynamicTableSelectOne(@RequestParam("id") Long id) {
         TestTable one =service.dynamicSelectOne(id,"test_table");
-        return FangResponse.buildSuccess(one);
+        return RestResponse.buildSuccess(one);
     }
 
 
     @GetMapping("/select_all_page")
-    public FangResponse testTableByPage(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+    public RestResponse testTableByPage(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
                                         @RequestParam(value = "pageSize",required = false,defaultValue = "2") int pageSize) {
         PageInfo<TestTable> pageInfo = service.selectByPage(pageNum,pageSize);
         Map<String,Object> result = new HashMap<>();
         result.put("list",pageInfo.getList());
         result.put("total",pageInfo.getTotal());
-        return FangResponse.buildSuccess(result);
+        return RestResponse.buildSuccess(result);
     }
 
 }
