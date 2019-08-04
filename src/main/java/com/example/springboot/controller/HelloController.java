@@ -41,9 +41,15 @@ public class HelloController {
         return "id:" + id;
     }
 
+    @GetMapping("/hello/{id}:json")
+    public RestResponse helloDetailByJson(@PathVariable("id") String id) {
+        return RestResponse.buildSuccess(id);
+    }
+
+
     @GetMapping("/hello/request")
     public Object helloRequest(HttpServletRequest request) {
-        int askId = Integer.parseInt(request.getParameter("ask_id"));
+        int askId = Integer.parseInt(request.getParameter("id"));
         return RestResponse.buildSuccess(askId);
     }
 
