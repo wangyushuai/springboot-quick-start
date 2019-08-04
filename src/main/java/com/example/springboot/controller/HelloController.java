@@ -1,6 +1,8 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.service.TestTableService;
 import com.example.springboot.util.response.RestResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,11 @@ import java.util.List;
  */
 
 @RestController
+@RequestMapping("/api/v1")
 public class HelloController {
+
+    @Autowired
+    TestTableService testTableService;
 
     /**
      * 欢迎页，路由支持多个参数
@@ -27,13 +33,14 @@ public class HelloController {
         return new RestResponse(200,"success",list);
     }
 
-    //Restful API 规范
-    @GetMapping("/hello/{askId}")
-    public String helloDetail(@PathVariable("askId") String askId) {
-        return "askId:" + askId;
+    /**
+     * Restful API 接口
+     */
+    @GetMapping("/hello/{id}")
+    public String helloDetail(@PathVariable("id") String id) {
+        return "id:" + id;
     }
 
-    //request.getParameter 接受参数
     @GetMapping("/hello/request")
     public Object helloRequest(HttpServletRequest request) {
         int askId = Integer.parseInt(request.getParameter("ask_id"));

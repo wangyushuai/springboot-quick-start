@@ -15,14 +15,14 @@ public interface TestTableService {
      * @param testTable
      * @return
      */
-    boolean transationAddError(TestTable testTable) throws Exception;
+    boolean transactionAddError(TestTable testTable) throws Exception;
 
     /**
      * 事务处理，事务添加
      * @param testTable
      * @return
      */
-    boolean transationAdd(TestTable testTable) throws Exception;
+    boolean transactionAdd(TestTable testTable) throws Exception;
 
     /**
      * 新增数据

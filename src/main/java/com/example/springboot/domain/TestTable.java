@@ -1,6 +1,6 @@
 package com.example.springboot.domain;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
@@ -10,9 +10,10 @@ import java.util.Date;
 public class TestTable {
     private Long id;
 
-    @NotNull(message = "name 值不能为空")
+    @NotBlank(message = "用户名不能为空")
     private String name;
 
+    @NotBlank(message = "手机号不能为空")
     private String phone;
 
     private int age;

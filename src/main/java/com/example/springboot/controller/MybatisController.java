@@ -32,7 +32,7 @@ public class  MybatisController {
     @PostMapping("/trans_add_error")
     public RestResponse testTableTransAddError(TestTable testTable) throws Exception {
         testTable.setCreateTime(new Date());
-        boolean result =  service.transationAddError(testTable);
+        boolean result =  service.transactionAddError(testTable);
         return RestResponse.buildSuccess(result);
     }
 
@@ -44,8 +44,8 @@ public class  MybatisController {
         if (bindingResult.hasErrors()){
             return new RestResponse(400,"error",bindingResult.getFieldError().getDefaultMessage());
         }
-
-        boolean result =  service.transationAddError(testTable);
+        // 写入逻辑
+        boolean result =  service.add(testTable);
         return RestResponse.buildSuccess(result);
     }
 

@@ -24,16 +24,24 @@ public class TestTableServiceImpl implements TestTableService {
     TestTableMappler testTableMappler;
 
     @Override
-    public boolean transationAddError(TestTable testTable) throws Exception {
+    public boolean transactionAddError(TestTable testTable) throws Exception {
         testTable.setName("服务异常，未使用事务");
         int result = testTableMappler.insert(testTable);
         //模拟服务异常的例子
         throw new Exception();
     }
 
+    /**
+     * 模拟异常的情况，查看回滚状况
+     * propagation: 事务隔离策略（级别），模式使用数据库默认，如Mysql为 可重复读
+     * rollbackFor: 规定什么情况下回滚
+     * @param testTable
+     * @return
+     * @throws Exception
+     */
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public boolean transationAdd(TestTable testTable) throws Exception {
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    public boolean transactionAdd(TestTable testTable) throws Exception {
         testTable.setName("服务异常,使用事务");
         testTableMappler.insert(testTable);
         throw  new Exception(); //模拟服务异常
