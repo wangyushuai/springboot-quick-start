@@ -6,11 +6,11 @@ package com.example.springboot.service;
  * @date 2019/8/4
  */
 public interface TestRequestApiService {
-    String URL_HELLO_DETAIL = "http://localhost:8080/api/v1/hello/{id}";
+    String URL_HELLO_DETAIL = "http://localhost:8080/api/v1/welcome/{user_name}";
     /**
      * 请求本地HelloController的 helloDetail /hello/id 方法
-     * @param id
+     * @param userName
      * @return
      */
-    String  getHelloDetail(Integer id);
+    String  getHelloDetail(String userName);
 }

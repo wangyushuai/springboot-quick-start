@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 
 /**
+ * DB 操作场景
  * Created by wangyushuai@fang.com on 2018/10/23.
  */
 public interface TestTableService {

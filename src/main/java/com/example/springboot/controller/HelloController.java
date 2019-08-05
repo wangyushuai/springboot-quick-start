@@ -41,9 +41,9 @@ public class HelloController {
         return "id:" + id;
     }
 
-    @GetMapping("/hello/{id}:json")
-    public RestResponse helloDetailByJson(@PathVariable("id") String id) {
-        return RestResponse.buildSuccess(id);
+    @GetMapping("/welcome/{user_name}")
+    public RestResponse helloUser(@PathVariable("user_name") String userName) {
+        return RestResponse.buildSuccess("Welcome " + userName);
     }
 
 

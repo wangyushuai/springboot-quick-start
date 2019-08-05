@@ -19,12 +19,13 @@ public class TestRequestApiServiceImpl implements TestRequestApiService {
     /**
      * 请求本地HelloController的 helloDetail /hello/id 方法
      *
-     * @param id
+     * @param userName
      * @return
      */
     @Override
-    public String getHelloDetail(Integer id) {
-        restTemplate.getForObject(TestRequestApiService.URL_HELLO_DETAIL, RestResponse.class);
+    public String getHelloDetail(String userName) {
+        restTemplate.getForObject(TestRequestApiService.URL_HELLO_DETAIL.replace("{user_name}",userName),
+                RestResponse.class);
         return null;
     }
 }
