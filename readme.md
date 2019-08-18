@@ -39,6 +39,12 @@
         9. SpringBoot2.x 整合 Actuator监控
         
         10. SpringBoot2.x 整合 SpringBoot-Admin监控
+	
+	11. SpringBoot2.x 整合 SpringBoot-Admin 2.1
+	
+	12. SpringBoot2.x 整合 单元测试
+
+12. SpringBoot2.x 整合 单元测试
         
       # 三、 其他Java 基础学习文档
       
