@@ -18,8 +18,6 @@ public class SpringbootApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		TestTableService service = (TestTableService) context.getBean("TestTableService");
-		Assert.notNull(service,"application not null");
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.domain.TestTable;
 import com.example.springboot.service.TestTableService;
 import com.example.springboot.util.response.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @decription 测试Http请求,API 开发 DEMO
@@ -19,6 +21,9 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class HelloController {
 
+    /**
+     * 数据库服务依赖
+     */
     @Autowired
     TestTableService testTableService;
 
@@ -35,10 +40,11 @@ public class HelloController {
 
     /**
      * Restful API 接口
+     * 使用 @PathVariable注解 接收此参数
      */
     @GetMapping("/hello/{id}")
-    public String helloDetail(@PathVariable("id") String id) {
-        return "id:" + id;
+    public String helloDetail(@PathVariable("id") Long id) {
+        return Optional.ofNullable(testTableService.selectOne(id)).map(TestTable::getName).orElse(null);
     }
 
     @GetMapping("/welcome/{user_name}")
@@ -47,6 +53,11 @@ public class HelloController {
     }
 
 
+    /**
+     * 使用HttpServletRequest 接收参数
+     * @param request
+     * @return
+     */
     @GetMapping("/hello/request")
     public Object helloRequest(HttpServletRequest request) {
         int askId = Integer.parseInt(request.getParameter("id"));
@@ -55,10 +66,14 @@ public class HelloController {
 
 
 
+
+
     //TODO: 多种返回值类型， 如： 直接返回Map,集合等
-    //TODO: 多种参数类型，如：Map 接受参数，接收参数名 和 方法参数名不一致情况
+    //TODO: 多种参数类型，如：Map 接受参数，接收参数名 和 方法参数名不一致情况s;
+    // 答： 使用 @RequestParam 注解
     //TODO: 实体集接收参数
     //TODO: 模型验证
+    // 答： @Valid
 
 
 }

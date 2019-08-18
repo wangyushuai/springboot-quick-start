@@ -8,10 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 
@@ -36,6 +33,7 @@ public class TestManagerServiceImplTest {
 
     /**
      * 将Mock 注入我们要测试的服务
+     * 注意： @InjectMocks 要使用非抽象方法
      */
     @InjectMocks
     TestManagerServiceImpl testManagerService;
@@ -49,7 +47,6 @@ public class TestManagerServiceImplTest {
         // 上面我们对Manager依赖的服务，进行了Mock， 在此种条件下，我们测试的方法应该返回 true
         // 故我们断言如下
         Assert.assertTrue("聚合服务fun方法正常情况",testManagerService.fun(1L));
-
         //TODO: 其他错误或异常情况，读者可以自行扩展，在此不展开，欢迎大家提问交流
     }
 }
