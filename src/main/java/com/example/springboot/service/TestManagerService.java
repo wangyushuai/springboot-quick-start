@@ -1,7 +1,5 @@
 package com.example.springboot.service;
 
-import com.example.springboot.domain.TestTable;
-
 /**
  * 聚合服务场景
  * 此Service 中含有DB操作，请求API操作，以及复合操作

@@ -1,7 +1,7 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.util.response.RestResponse;
 import com.example.springboot.util.config.ServerSettings;
+import com.example.springboot.util.response.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;

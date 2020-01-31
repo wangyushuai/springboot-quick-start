@@ -2,7 +2,6 @@ package com.example.springboot.mapper;
 
 import com.example.springboot.domain.TestTable;
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
